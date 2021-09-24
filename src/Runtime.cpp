@@ -4,6 +4,7 @@
 #include <algorithm>
 
 RuntimeContext::RuntimeContext() {
+    K = 2;
 }
 
 void RuntimeContext::registerVariable(std::string name) {
@@ -29,7 +30,11 @@ std::vector<std::string> RuntimeContext::getVariablesNames() {
 }   
 
 unsigned int RuntimeContext::getK() {
-    return 2;
+    return K;
+}
+
+void RuntimeContext::setK(int newK) {
+    K = newK;
 }
 
 void RuntimeContext::clear() {

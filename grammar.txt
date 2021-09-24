@@ -6,14 +6,12 @@
 	{x} == zero or more of x's
 	(x z) - grouping of x and z
 
-function        ::= expression
-
 expression		::= equality
-equality		::= implication {'<=>' equality}
+equality		::= implication {'<=>' implication}
 implication		::= disjunction {'=>' disjunction}
 disjunction		::= conjunction {'|' conjunction}
 conjunction		::= factor {'&' factor}
 
 factor          ::= '!' factor | '(' expression ')' | variable | const
 
-const           ::= 0 | 1
+const           ::= 0 | 1 | ... | k-1

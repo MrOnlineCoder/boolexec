@@ -23,8 +23,12 @@ class RuntimeContext {
         unsigned int getK();
 
         void clear();
+
+        void setK(int newK);
     private:
         std::unordered_map<std::string, value_t> m_variables;
+
+        int K;
 };
 
 #endif // RUNTIME_HPP

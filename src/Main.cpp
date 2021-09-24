@@ -14,12 +14,37 @@ int main(int argc, char* argv[]) {
     Lexer lexer;
     Parser parser;
 
+    int lastK = 2;
+
     while (std::getline(std::cin, input)) {
         if (input == "/exit") {
             break;
         }
 
         if (input.length() == 0) {
+            std::cout << "\n"
+                      << REPL_PROMPT;
+
+            continue;
+        }
+
+        if (input[0] == '@') {
+            int newK = std::stoi(input.substr(1));
+
+            if (newK < 2) {
+                lastK = newK;
+
+                std::cout << "ERROR: New K value must be at least 2 ";
+            } else {
+                lastK = newK;
+
+                if (newK == 2) {
+                    std::cout << "Switched to boolean logical space";
+                } else {
+                    std::cout << "Switched to logical space with K = " << newK;
+                }
+            }
+
             std::cout << "\n"
                       << REPL_PROMPT;
 
@@ -46,6 +71,8 @@ int main(int argc, char* argv[]) {
             //root->dump();
 
             auto context = parser.buildRuntimeContext();
+
+            context.setK(lastK);
 
             auto vars = context.getVariablesNames();
 

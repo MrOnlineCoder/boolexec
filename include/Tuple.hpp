@@ -9,11 +9,17 @@ class Tuple {
 
         int getDigitAt(std::size_t index);
 
+        void setDigitAt(std::size_t index, int value);
+
         void increment();
 
         ~Tuple();
 
         bool isFinal();
+
+        int* getDataPtr(); 
+
+        std::size_t getSize();
 
         void dump();
     private:

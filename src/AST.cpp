@@ -73,7 +73,7 @@ const NodeType UnaryOpNode::getType() {
 
 value_t UnaryOpNode::eval(RuntimeContext& context) {
     if (m_token.getType() == TokenType::OP_NOT) {
-        return 1 - m_children[0]->eval(context);       
+        return context.getK() - 1 - m_children[0]->eval(context);       
     }
 }
 

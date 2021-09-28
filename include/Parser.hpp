@@ -17,6 +17,8 @@ class Parser {
         RuntimeContext buildRuntimeContext();
 
         void clear();
+
+        ~Parser();
     private:    
         unsigned int m_ip;
 

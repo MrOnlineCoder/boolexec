@@ -1,8 +1,11 @@
 #include <Lexer.hpp>
 #include <Parser.hpp>
 #include <Tuple.hpp>
+#include <LogicFunction.hpp>
+
 #include <iostream>
 #include <string>
+#include <cmath>
 
 int main(int argc, char* argv[]) {
     std::string input;
@@ -77,6 +80,15 @@ int main(int argc, char* argv[]) {
             auto vars = context.getVariablesNames();
 
             if (vars.size() > 0) {
+                LinearityChecker linearChecker;
+                Tuple fVector(
+                    std::pow(
+                        2,
+                        vars.size()
+                    ),
+                    context.getK()
+                );
+
                 std::string divider = "\n";
 
                 for (auto var : vars) {
@@ -105,16 +117,39 @@ int main(int argc, char* argv[]) {
 
                     std::cout << " = " << result << "\n";
 
+                    linearChecker.iterate(
+                        tuple,
+                        result
+                    );
+
                     if (tuple.isFinal()) {
                         wasFinal = true;
                     } else {
                         tuple.increment();
                     }
 
+                    fVector.setDigitAt(tuplesCount, result);
+
                     tuplesCount++;
                 } while (!wasFinal);
 
                 std::cout << "Total " << tuplesCount << " tuples processed\n";
+                
+                if (tuplesCount < 64) {
+                    std::cout << "F = ( ";
+                    fVector.dump();
+                    std::cout << ")\n";
+                }
+
+                LogicFunction fn(fVector);
+                fn.updateLinearity(linearChecker);
+
+                std::cout << "\n";
+                std::cout << "F -> A0 = " << fn.doesSaveZero() << "\n";
+                std::cout << "F -> A1 = " << fn.doesSaveOne() << "\n";
+                std::cout << "F -> S = " << fn.doesBelongToSClass() << "\n";
+                std::cout << "F -> L = " << fn.isLinear() << "\n";
+                std::cout << "F -> M = " << fn.isMonotone() << "\n";
             } else {
                 auto result = root->eval(context);
 

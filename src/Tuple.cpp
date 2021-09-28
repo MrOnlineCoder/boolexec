@@ -46,3 +46,15 @@ void Tuple::dump() {
         std::cout << m_data[i] << " ";
     }
 }
+
+void Tuple::setDigitAt(std::size_t index, int value) {
+    m_data[index] = value;
+}
+
+int* Tuple::getDataPtr() {
+    return m_data;
+}
+
+std::size_t Tuple::getSize() {
+    return m_size;
+}

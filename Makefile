@@ -1,6 +1,6 @@
 CC=g++
 CFLAGS=-std=c++11 -g -O2 -c -Iinclude
-OBJS=obj/Lexer.o obj/Main.o  obj/AST.o obj/Parser.o obj/Runtime.o obj/Tuple.o
+OBJS=obj/Lexer.o obj/Main.o  obj/AST.o obj/Parser.o obj/Runtime.o obj/Tuple.o obj/LogicFunction.o
 
 obj/Lexer.o: src/Lexer.cpp
 	$(CC) $(CFLAGS) -o obj/Lexer.o src/Lexer.cpp
@@ -19,6 +19,9 @@ obj/Runtime.o: src/Runtime.cpp
 
 obj/Tuple.o: src/Tuple.cpp
 	$(CC) $(CFLAGS) -o obj/Tuple.o src/Tuple.cpp 
+
+obj/LogicFunction.o: src/LogicFunction.cpp
+	$(CC) $(CFLAGS) -o obj/LogicFunction.o src/LogicFunction.cpp 
 
 run: $(OBJS)
 	$(CC)  $(OBJS) -g -o boolexec

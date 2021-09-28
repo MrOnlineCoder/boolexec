@@ -5,6 +5,12 @@ Parser::Parser() : m_astRoot(NULL) {
     clear();
 }
 
+Parser::~Parser() {
+    if (m_astRoot) {
+        delete m_astRoot;
+    }
+}
+
 bool Parser::parse(const std::vector<Token>& tokens) {
     m_tokens = tokens;
 
@@ -89,6 +95,7 @@ ASTNode* Parser::doFactor() {
         auto expr = doExpression();
 
         consume(TokenType::RPAREN);
+        advance();
 
         return expr;
     }

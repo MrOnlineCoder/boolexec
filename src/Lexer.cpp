@@ -43,6 +43,12 @@ bool Lexer::scan(const std::string& input) {
             continue;
         }
 
+        if (c == '+' || c == '^') {
+            m_tokens.push_back(Token(TokenType::OP_XOR));
+            ip++;
+            continue;
+        }
+
         if (c == '|') {
             m_tokens.push_back(Token(TokenType::OP_OR));
             ip++;

@@ -101,6 +101,9 @@ value_t BinaryOpNode::eval(RuntimeContext& context) {
                 left_value,
                 right_value);
 
+        case TokenType::OP_XOR:
+            return left_value ^ right_value;
+
         case TokenType::OP_EQ:
             return left_value == right_value;
 

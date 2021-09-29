@@ -34,7 +34,7 @@ class Parser {
         ASTNode* doDisjunction();
         ASTNode* doImplication();
         ASTNode* doEquality(); //lol
-        ASTNode* doExpression();
+        ASTNode* doExpression();;
 
         std::vector<Token> m_tokens;
 

@@ -80,7 +80,7 @@ int main(int argc, char* argv[]) {
             auto vars = context.getVariablesNames();
 
             if (vars.size() > 0) {
-                LinearityChecker linearChecker;
+                LinearityChecker linearChecker(vars.size());
                 Tuple fVector(
                     std::pow(
                         2,

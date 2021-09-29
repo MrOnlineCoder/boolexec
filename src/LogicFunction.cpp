@@ -39,7 +39,7 @@ bool LogicFunction::doesBelongToSClass() {
 void LogicFunction::checkClasses() {
     //S
     m_isSClass = true;
-    for (std::size_t i = 0; i < m_tuple.getSize(); i++) {
+    for (std::size_t i = 0; i < m_tuple.getSize() / 2; i++) {
         if (m_tuple.getDigitAt(i) == m_tuple.getDigitAt(
                                          m_tuple.getSize() - i - 1)) {
             m_isSClass = false;
@@ -79,14 +79,12 @@ void LinearityChecker::iterate(
     
     for (std::size_t i = 0; i < tuple.getSize(); i++) {
         auto dValue = tuple.getDigitAt(i);
-        tupleSum += dValue;
+        tupleSum ^= dValue;
         if (dValue) {
             variablesUsed++;
             lastTruthyIndex = i;
         }
     }
-
-    std::cout << "Linear = " << variablesUsed << " , " << tupleSum << std::endl;
 
     if (variablesUsed == 0) return;
 

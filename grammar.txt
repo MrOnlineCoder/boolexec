@@ -9,7 +9,7 @@
 expression		::= equality
 equality		::= implication {'<=>' implication}
 implication		::= disjunction {'=>' disjunction}
-disjunction		::= conjunction {'|' conjunction}
+disjunction		::= conjunction {'|' | '+' conjunction}
 conjunction		::= factor {'&' factor}
 
 factor          ::= '!' factor | '(' expression ')' | variable | const

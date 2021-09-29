@@ -124,7 +124,7 @@ ASTNode* Parser::doConjuction() {
 ASTNode* Parser::doDisjunction() {
     auto left = doConjuction();
 
-    while (peek().getType() == TokenType::OP_OR) {
+    while (peek().getType() == TokenType::OP_OR || peek().getType() == TokenType::OP_XOR) {
         auto opToken = currentToken();
         advance();
 

@@ -5,15 +5,16 @@
 
 enum class TokenType {
     NONE = 0,
-    CONST = 1,
-    OP_NOT = 2,
-    OP_AND = 3,
-    OP_OR = 4,
-    OP_IMPLICATION = 5,
-    OP_EQ = 6,
-    LPAREN = 7,
-    RPAREN = 8,
-    IDENTIFIER = 9
+    CONST,
+    OP_NOT,
+    OP_AND,
+    OP_OR,
+    OP_IMPLICATION,
+    OP_EQ,
+    OP_XOR,
+    LPAREN,
+    RPAREN,
+    IDENTIFIER
 };
 
 class Token {

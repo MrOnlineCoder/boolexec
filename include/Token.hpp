@@ -12,6 +12,7 @@ enum class TokenType {
     OP_IMPLICATION,
     OP_EQ,
     OP_XOR,
+    OP_LOOP,
     LPAREN,
     RPAREN,
     IDENTIFIER

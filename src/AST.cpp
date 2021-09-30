@@ -75,6 +75,10 @@ value_t UnaryOpNode::eval(RuntimeContext& context) {
     if (m_token.getType() == TokenType::OP_NOT) {
         return context.getK() - 1 - m_children[0]->eval(context);       
     }
+
+    if (m_token.getType() == TokenType::OP_LOOP) {
+        return (m_children[0]->eval(context) + 1) % context.getK();
+    }
 }
 
 // ===============================
@@ -102,7 +106,12 @@ value_t BinaryOpNode::eval(RuntimeContext& context) {
                 right_value);
 
         case TokenType::OP_XOR:
-            return left_value ^ right_value;
+            if (context.getK() == 2) {
+                return left_value ^ right_value;
+            } else {
+                return (left_value + right_value) % context.getK();
+            }
+               
 
         case TokenType::OP_EQ:
             return left_value == right_value;

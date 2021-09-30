@@ -77,7 +77,7 @@ ASTNode* Parser::doFactor() {
         return new VariableNode(tok.asString());
     }
 
-    if (tok.getType() == TokenType::OP_NOT) {
+    if (tok.getType() == TokenType::OP_NOT || tok.getType() == TokenType::OP_LOOP) {
         advance();
 
         auto operand = doFactor();

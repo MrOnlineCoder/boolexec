@@ -12,6 +12,6 @@ implication		::= disjunction {'=>' disjunction}
 disjunction		::= conjunction {'|' | '+' conjunction}
 conjunction		::= factor {'&' factor}
 
-factor          ::= '!' factor | '(' expression ')' | variable | const
+factor          ::= ('!' | '~') factor | '(' expression ')' | variable | const
 
 const           ::= 0 | 1 | ... | k-1

@@ -55,6 +55,12 @@ bool Lexer::scan(const std::string& input) {
             continue;
         }
 
+        if (c == '~') {
+            m_tokens.push_back(Token(TokenType::OP_LOOP));
+            ip++;
+            continue;
+        }
+
         if (c == '!') {
             m_tokens.push_back(Token(TokenType::OP_NOT));
             ip++;

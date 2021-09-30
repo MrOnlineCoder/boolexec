@@ -135,13 +135,13 @@ int main(int argc, char* argv[]) {
 
                 std::cout << "Total " << tuplesCount << " tuples processed\n";
                 
-                if (tuplesCount < 64) {
+                /*if (tuplesCount < 64) {
                     std::cout << "F = ( ";
                     fVector.dump();
                     std::cout << ")\n";
-                }
+                }*/
 
-                LogicFunction fn(fVector);
+                /*LogicFunction fn(fVector);
                 fn.updateLinearity(linearChecker);
 
                 std::cout << "\n";
@@ -149,7 +149,7 @@ int main(int argc, char* argv[]) {
                 std::cout << "F -> A1 = " << fn.doesSaveOne() << "\n";
                 std::cout << "F -> S = " << fn.doesBelongToSClass() << "\n";
                 std::cout << "F -> L = " << fn.isLinear() << "\n";
-                std::cout << "F -> M = " << fn.isMonotone() << "\n";
+                std::cout << "F -> M = " << fn.isMonotone() << "\n";*/
             } else {
                 auto result = root->eval(context);
 
